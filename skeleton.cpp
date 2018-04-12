@@ -34,8 +34,8 @@ int main( int argc, char* argv[] )
 
   while( NoQuitMessageSDL() )
     {
-      // Draw(screen);
-      // Update();
+      Draw(screen);
+      Update();
       SDL_Renderframe(screen);
     }
 
@@ -78,19 +78,13 @@ void Draw(screen* screen)
   Interpolate (topLeft, bottomLeft, leftSide );
   Interpolate (topRight, bottomRight, rightSide );
 
-  // vector<vec3> rows( SCREEN_HEIGHT );
-  // Interpolate (leftSide, rightSide, rows);
-  // vec3 colour(1.0,0.0,0.0);
-  vec3 colour(0.0,0.6,1.0);
-  // for(int i=0; i<1000; i++)
   for(int i=0; i<SCREEN_HEIGHT; i++)
     {
       vector<vec3> rows( SCREEN_WIDTH );
       Interpolate (leftSide[i], rightSide[i], rows );
-      for
-      // uint32_t x = rand() % screen->width;
-      // uint32_t y = rand() % screen->height;
-      // PutPixelSDL(screen, x, y, colour);
+      for(int p = 0; p <SCREEN_WIDTH; p++){
+        PutPixelSDL(screen,p,i,rows[p]);
+      }
     }
 }
 
